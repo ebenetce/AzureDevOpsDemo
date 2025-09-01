@@ -97,6 +97,9 @@ openProject('MyNewModel.prj');
 %[text] 4. Resolve any conflicts if the "main branch" has changed in the middle. \
 !git branch %[output:6c749bef]
 %[text] ![](text:image:5b48)
+%[text] Sync the branch to the server:
+!git commit -am "Added project"
+!git push --set-upstream origin AddFile
 %%
 %[text] ### Add a function
 %[text] The current model is missing a function, the task will be to add this function and merge the changes back into the repository
@@ -150,7 +153,7 @@ runtests
 %%
 %[text] ### Tidy up and push
 %[text] ![](text:image:8fef)
-!git push
+!git push --set-upstream origin AddFile
 %%
 %[text] ### Merge to main
 %[text] ![](text:image:46b1)
