@@ -14,8 +14,8 @@
 %[text] or if you even want to lose the **`!`** you can create this function and add it to your path:
 %[text] ```matlabCodeExample
 %[text] function git(varargin)
-%[text] cmd = sprintf("git %s", strjoin(varargin, ' '));
-%[text] system(cmd);
+%[text]   cmd = sprintf("git %s", strjoin(varargin, ' '));
+%[text]   system(cmd);
 %[text] end
 %[text] ```
 %%
@@ -91,14 +91,19 @@ openProject('MyNewModel.prj');
 %[text] ![](text:image:7a24)
 %%
 %[text] ## Best practices with GIT and Projects
-%[text] ### Create a branch
-%[text] Our model is currently not running, so we need to make some modification. Normally, you don't work on the main. You follow this process:
+%[text] Our model is currently not running, if we call the following command:
+dynare Smets_Wouters_2007_45.mod nolog
+%[text] we will see that the current model is missing a function, the task will be to add this function and merge the changes back into the repository. Normally, you don't work on the main branch. You follow this process:
 %[text] 1. Create a branch (a copy of the code at the current state).
 %[text] 2. Make the changes in the branch
 %[text] 3. Bring the changes back to the "main branch". This is called merge
 %[text] 4. Resolve any conflicts if the "main branch" has changed in the middle. \
+%%
+%[text] ### Create a branch
+%[text] As usual, we can do this from either the UI or from the command line, whichever is easier for everyone:
 !git branch
 %[text] ![](text:image:8e5d)
+%%
 %[text] Sync the branch to the server:
 !git commit -am "Added project"
 !git push --set-upstream origin AddFile
@@ -165,7 +170,31 @@ runtests
 %[text] ## Connect to Azure DevOps
 %[text] Connecting to Azure DevOps or any other CI platform is trivial. You simply need to add the corresponding YML file with the pipeline instructions. For details on most CI platforms visit the page below:
 %[text] [Continuous Integration with MATLAB on CI Platforms - MATLAB & Simulink](https://uk.mathworks.com/help/matlab/matlab_prog/continuous-integration-with-matlab-on-ci-platforms.html)
-%[text] However, for Azure DevOps you can do as follows
+%[text] However, for Azure DevOps you can do as follows:
+%[text] **`azure-pipelines.yml`**
+%[text] ```
+%[text] # Starter pipeline
+%[text] # Start with a minimal pipeline that you can customize to build and deploy your code.
+%[text] # Add steps that build, run tests, deploy, and more:
+%[text] # https://aka.ms/yaml
+%[text] 
+%[text] trigger:
+%[text] - main
+%[text] 
+%[text] pool:
+%[text]   name: Default
+%[text] 
+%[text] steps:
+%[text] - script: matlab -batch "openProject('MyNewModel.prj'); main"
+%[text]   displayName: 'Run a one-line script'
+%[text] 
+%[text] - task: PublishBuildArtifacts@1
+%[text]   displayName: 'Publish MyReport.docx as artifact'
+%[text]   inputs:
+%[text]     PathtoPublish: 'reporting/MyReport.docx'
+%[text]     ArtifactName: 'MyReport'
+%[text]     publishLocation: 'Container'
+%[text] ```
 %[text] ## Complete the full workflow
 %[text] mlreportgen.dom.Document.createTemplate("reporting/dnbtemplate","pdf");
 %[text] unzipTemplate("reporting/dnbtemplate.pdftx")
