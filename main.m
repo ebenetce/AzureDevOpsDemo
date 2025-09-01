@@ -31,7 +31,7 @@ addParagraph(doc, 'Heading 1', 'Introduction', Move = false)
 addParagraph(doc, 'Normal', getPlaceHolderText(), Move = false)
 
 exportgraphics(f1, 'reporting/fig1.png')
-exportgraphics(f1, 'reporting/fig2.png')
+exportgraphics(f2, 'reporting/fig2.png')
 plot1 = Image("reporting/fig1.png");
 plot1.Width = "6in";
 plot1.Height = "3in";
