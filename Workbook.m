@@ -1,11 +1,26 @@
 %[text] # MATLAB integration with CI and Azure DevOps
 %[text:tableOfContents]{"heading":"Table of Contents"}
+%[text] ## Agenda
+%[text] - Different ways of working with Git and MATLAB
+%[text] - MATLAB projects and Git Integration
+%[text] - Azure DevOps
+%[text] - Automating Jobs \
 %[text] ## Source control in MATLAB
+%[text] MATLAB can work with GIT even if GIT is not installed in your system. **Most of GIT functionality is accessible from the MATLAB environment itself**
 %[text] ### Are you familiar with **`git?`**
 %[text] #### **`-> Yes!`**
 %[text] You can run any git command from MATLAB like this!
 !git help %[output:36ea3fc3]
-%[text] Or use the MATLAB Integration for git to get easier access to some comands
+%[text] or if you even want to lose the **`!`** you can create this function and add it to your path:
+%[text] ```matlabCodeExample
+%[text] function git(varargin)
+%[text] cmd = sprintf("git %s", strjoin(varargin, ' '));
+%[text] system(cmd);
+%[text] end
+%[text] ```
+%%
+%[text] ### -\> a little
+%[text] If you are medium git user or you don't have git installed int your computer. You can use the MATLAB Integration for git to get easier access to some commands
 repo = gitrepo %[output:43648562]
 %[text] Other commands include
 %[text] - **`commit`**
@@ -14,11 +29,11 @@ repo = gitrepo %[output:43648562]
 %[text] - **`fetch`**
 %[text] - **`pull`**
 %[text] - **`...`** \
-%[text] [Git in MATLAB](https://uk.mathworks.com/help/releases/R2025a/matlab/matlab-git-source-control.html?s_tid=CRUX_lftnav)
-%[text] We would still recommend using MATLAB Projects.
+%[text] For more information visit [Git in MATLAB](https://uk.mathworks.com/help/releases/R2025a/matlab/matlab-git-source-control.html?s_tid=CRUX_lftnav)
+%[text] **We would still recommend using** [**MATLAB Projects.**](https://uk.mathworks.com/help/releases/R2025a/matlab/projects.html)
 %%
 %[text] #### **`-> No!`**
-%[text] Try using a project!
+%[text] Try using a [project](https://uk.mathworks.com/help/releases/R2025a/matlab/projects.html)!
 %%
 %[text] ### Cloning a repository
 %[text] To get started, we are going to clone a repository with some instructions. There are several ways of doing this:
@@ -113,7 +128,7 @@ dynare Smets_Wouters_2007_45.mod nolog
 %   data: {"dataType":"text","outputData":{"text":"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n","truncated":false}}
 %---
 %[output:43648562]
-%   data: {"dataType":"textualVariable","outputData":{"name":"repo","value":"  <a href=\"matlab:helpPopup('matlab.git.GitRepository')\" style=\"font-weight:bold\">GitRepository<\/a> with properties:\n\n     WorkingFolder: \"C:\\Users\\ebenetce\\MATLAB\\CentralBanks\\DNB\\Sept-2-MatlabDay\\DynareModelParallel\"\n         GitFolder: \"C:\\Users\\ebenetce\\MATLAB\\CentralBanks\\DNB\\Sept-2-MatlabDay\\DynareModelParallel\\.git\"\n     CurrentBranch: [1×1 GitBranch] (main -> origin\/main)\n        LastCommit: [1×1 GitCommit] (43e3a84)\n           Remotes: [1×1 GitRemote] (origin https:\/\/github.com\/ebenetce\/DynareModelParallel.git)\n     ModifiedFiles: [4×1 string]\n    UntrackedFiles: [3×1 string]\n            IsBare: 0\n         IsShallow: 0\n        IsDetached: 0\n        IsWorktree: 0\n"}}
+%   data: {"dataType":"textualVariable","outputData":{"name":"repo","value":"  <a href=\"matlab:helpPopup('matlab.git.GitRepository')\" style=\"font-weight:bold\">GitRepository<\/a> with properties:\n\n     WorkingFolder: \"C:\\Users\\ebenetce\\MATLAB\\CentralBanks\\DNB\\Sept-2-MatlabDay\\AzureDevOpsDemo\"\n         GitFolder: \"C:\\Users\\ebenetce\\MATLAB\\CentralBanks\\DNB\\Sept-2-MatlabDay\\AzureDevOpsDemo\\.git\"\n     CurrentBranch: [1×1 GitBranch] (main -> origin\/main)\n        LastCommit: [1×1 GitCommit] (5ea0dd5)\n           Remotes: [1×1 GitRemote] (origin https:\/\/github.com\/ebenetce\/AzureDevOpsDemo)\n     ModifiedFiles: [2×1 string]\n    UntrackedFiles: \"C:\\Users\\ebenetce\\MATLAB\\CentralBanks\\DNB\\Sept-2-MatlabDay\\AzureDevOpsDemo\\Workbook.asv\"\n            IsBare: 0\n         IsShallow: 0\n        IsDetached: 0\n        IsWorktree: 0\n"}}
 %---
 %[output:6df14f34]
 %   data: {"dataType":"textualVariable","outputData":{"name":"prj","value":"  <a href=\"matlab:helpPopup('matlab.project.Project')\" style=\"font-weight:bold\">Project<\/a> with properties:\n\n                        Name: \"MyNewModel\"\n                 Description: \"\"\n                  RootFolder: \"C:\\Users\\ebenetce\\MATLAB\\CentralBanks\\DNB\\Sept-2-MatlabDay\\AzureDevOpsDemo\"\n                    TopLevel: 1\n                    ReadOnly: 0\n         DefinitionFilesType: FixedPathMultiFile\n    SourceControlIntegration: \"Git\"\n          RepositoryLocation: \"https:\/\/github.com\/ebenetce\/AzureDevOpsDemo\"\n                       Files: [1×2 matlab.project.ProjectFile]\n                   Shortcuts: [1×0 matlab.project.Shortcut]\n                  Categories: [1×1 matlab.project.Category]\n                Dependencies: [1×1 digraph]\n                StartupFiles: [1×0 string]\n               ShutdownFiles: [1×0 string]\n                 ProjectPath: [1×0 matlab.project.PathFolder]\n           ProjectReferences: [1×0 matlab.project.ProjectReference]\n        ProjectStartupFolder: \"C:\\Users\\ebenetce\\MATLAB\\CentralBanks\\DNB\\Sept-2-MatlabDay\\AzureDevOpsDemo\"\n         DependencyCacheFile: \"\"\n"}}
