@@ -38,3 +38,7 @@ codegen/
 # SimBiology backup files
 *.sbproj.backup
 *.sbproj.bak
+
+/Smets_Wouters_2007_45/
+
+/+Smets_Wouters_2007_45/
