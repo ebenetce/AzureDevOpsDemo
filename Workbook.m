@@ -49,6 +49,7 @@ repo = gitrepo %[output:43648562]
 %[text] ![](text:image:02d0)
 %[text] This repository contains a Dynare model and a main file with instructions to understand how git, projects, and Azure DevOps works in MATLAB.
 %%
+%[text] ## MATLAB Projects
 %[text] ### What is a MATLAB Project?
 %[text] If you have been working with MATLAB, you probably have seen a model or a function that contains a README with instructions on how to run it which include some of these:
 %[text] - addpath
