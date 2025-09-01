@@ -124,6 +124,9 @@ dynare Smets_Wouters_2007_45.mod nolog
 %[text] 
 %%
 %[text] ## Connect to Azure DevOps
+%[text] Connecting to Azure DevOps or any other CI platform is trivial. You simply need to add the corresponding YML file with the pipeline instructions. For details on most CI platforms visit the page below:
+%[text] [Continuous Integration with MATLAB on CI Platforms - MATLAB & Simulink](https://uk.mathworks.com/help/matlab/matlab_prog/continuous-integration-with-matlab-on-ci-platforms.html)
+%[text] However, for Azure DevOps you can do as follows
 %[text] ## Complete the full workflow
 %[text] mlreportgen.dom.Document.createTemplate("reporting/dnbtemplate","pdf");
 %[text] unzipTemplate("reporting/dnbtemplate.pdftx")
