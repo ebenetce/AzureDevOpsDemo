@@ -10,7 +10,7 @@ pool:
   name: Default
 
 steps:
-- script: matlab -batch "openProject('MyNewModel.prj'); main"
+- script: matlab -batch "openProject('MyNewModel.prj'); runtests; main"
   displayName: 'Run a one-line script'
 
 - task: PublishBuildArtifacts@1
