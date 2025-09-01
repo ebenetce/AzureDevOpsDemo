@@ -11,10 +11,10 @@ plan("check") = CodeIssuesTask;
 % Add the "test" task to run tests
 plan("test") = TestTask;
 
-% Make the "archive" task the default task in the plan
-plan.DefaultTasks = "archive";
+% Make the "publish" task the default task in the plan
+plan.DefaultTasks = "publish";
 
-% Make the "archive" task dependent on the "check" and "test" tasks
+% Make the "publish" task dependent on the "check" and "test" tasks
 plan("publish").Dependencies = ["check" "test"];
 end
 
